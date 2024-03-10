@@ -155,14 +155,7 @@
         </div>
 
 
-        <!-- TODO: Add actors and directors
-        TODO: Add reviews DONE
-        TODO: Add watchlist button
-        TODO: Add rating DONE
-        TODO: Add comments
-        TODO: Add similar movies
-        TODO: Add trailer DONE
-        TODO: Add Movie Poster DONE -->
+
     </div>
 
     <!-- Reviews Section -->

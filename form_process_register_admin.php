@@ -3,9 +3,9 @@
 include "navbar.php";
 include "db_connect.php";
 
-$sqlTemp = $conn->prepare("INSERT INTO login (username, password, fname, lname, email, address) VALUES (?,?,?,?,?,?)");
+$sqlTemp = $conn->prepare("INSERT INTO login (username, password, fname, lname, email, address, admin) VALUES (?,?,?,?,?,?, ?)");
 
-$sqlTemp->bind_param("ssssss", $username, $passwordHashed, $fname, $lname, $email, $address);
+$sqlTemp->bind_param("ssssssi", $username, $passwordHashed, $fname, $lname, $email, $address, $admin);
 
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -14,6 +14,7 @@ $lname = $_POST['lname'];
 $email = $_POST['email'];
 $address = $_POST['address'];
 $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
+$admin = 1;
 
 $sqlTemp->execute();
 
@@ -26,7 +27,6 @@ echo '<br><br><div class="container">
         </div>
     </div>';
 echo "Username: " . $username . "<br>";
-//echo password_hash($password, PASSWORD_DEFAULT) . "<br>";
 echo "Password: " . $password . "<br>";
 echo "Password Hashed: " . $passwordHashed . "<br>";
 
