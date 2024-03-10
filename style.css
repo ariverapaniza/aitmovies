@@ -1,0 +1,34 @@
+body {
+  padding-top: 78px;
+}
+
+.carousel-item {
+  transition: filter 0.2s ease-in-out;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 600px; /* Fixed height */
+  object-fit: cover; /* This ensures images cover the area without stretching */
+}
+
+.carousel-item:not(.active) {
+  filter: blur(4px); /* Blur effect for non-active items */
+}
+
+.poster-carousel-row {
+  display: flex;
+  align-items: stretch; /* Ensures equal height of children */
+}
+
+.poster-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.poster-container img {
+  max-height: 400px; /* Ensures image does not exceed its container's height */
+  width: auto; /* Maintain aspect ratio */
+  max-width: 100%; /* Ensures image does not exceed its container's width */
+}
