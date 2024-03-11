@@ -30,7 +30,7 @@ foreach ($movies as $index => $movie) {
                 <img src="' . $movie["image1"] . '" class="d-block w-100" alt="' . htmlspecialchars($movie["title"]) . '">
             </a>
             <div class="carousel-caption d-none d-md-block">
-                <h5>' . htmlspecialchars($movie["title"]) . '</h5>
+                <h2>' . htmlspecialchars($movie["title"]) . '</h2>
                 <p>' . htmlspecialchars($movie["description"]) . '</p>
             </div>
         </div>';

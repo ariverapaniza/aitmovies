@@ -190,7 +190,19 @@
 
 
 
-    <?php include 'review.php'; ?>
+
+
+    <?php
+    if (isset($_SESSION['username'])) {
+        include 'review.php';
+    } else {
+        // Display a message if the user is not logged in
+        echo '<div class="container text-center mt-5">
+                <p>You must be logged in to leave a review.</p>
+                <a href="login.php" class="btn btn-primary">Login</a>
+            </div>';
+    }
+    echo "<br>"; ?>
 
 
 </body>
