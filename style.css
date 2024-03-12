@@ -32,3 +32,13 @@ body {
   width: auto; /* Maintain aspect ratio */
   max-width: 100%; /* Ensures image does not exceed its container's width */
 }
+
+/* Newest Movie Carousel */
+.carousel-item .d-flex {
+  justify-content: start;
+  overflow-x: auto;
+}
+
+.carousel-item .card {
+  margin-right: 10px;
+}

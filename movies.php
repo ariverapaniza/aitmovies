@@ -37,9 +37,9 @@ echo '<div class="container">
                         <option value="Fantasy">Fantasy</option>
 			            <option value="Horror">Horror</option>
                         <option value="Science-Fiction">Science-Fiction</option>
-                        <option value="Suspense">Suspense</option>
+                        <option value="Mystery">Mystery</option>
                         <option value="Thriller">Thriller</option>
-                        <option value="True Story">True Story</option>
+                        <option value="Documentary">Documentary</option>
                         <option value="Western">Western</option>
                     </select><br>
                 </div>
