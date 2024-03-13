@@ -48,13 +48,13 @@ foreach ($results['movies'] as $movie) {
 // Display Actor results
 echo "<h3>Actors</h3>";
 foreach ($results['actors'] as $actor) {
-    echo "<H3><a href='actor_info.php?fname=" . urlencode($actor['fname']) . "&lname=" . urlencode($actor['lname']) . "'>" . htmlspecialchars($actor['fname']) . " " . htmlspecialchars($actor['lname']) . "</a></H3>";
+    echo "<H3><a href='actor_profile.php?fname=" . urlencode($actor['fname']) . "&lname=" . urlencode($actor['lname']) . "'>" . htmlspecialchars($actor['fname']) . " " . htmlspecialchars($actor['lname']) . "</a></H3>";
 }
 
 // Display Director results
 echo "<h3>Directors</h3>";
 foreach ($results['directors'] as $director) {
-    echo "<H3><a href='director_info.php?fname=" . urlencode($director['fname']) . "&lname=" . urlencode($director['lname']) . "'>" . htmlspecialchars($director['fname']) . " " . htmlspecialchars($director['lname']) . "</a></H3>";
+    echo "<H3><a href='director_profile.php?fname=" . urlencode($director['fname']) . "&lname=" . urlencode($director['lname']) . "'>" . htmlspecialchars($director['fname']) . " " . htmlspecialchars($director['lname']) . "</a></H3>";
 }
 
 echo "</div>";

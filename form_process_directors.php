@@ -3,15 +3,34 @@
 include "navbar.php";
 include "db_connect.php";
 
-$sqlTemp = $conn->prepare("INSERT INTO directors (fname, lname, gender, description) VALUES (?,?,?,?)");
+// Function to upload image and return the file path
+function uploadImage($imageField)
+{
+    $target_dir = "uploads/";
+    // Check if the file is uploaded
+    if (isset($_FILES[$imageField]) && $_FILES[$imageField]['error'] == 0) {
+        $target_file = $target_dir . basename($_FILES[$imageField]["name"]);
+        if (move_uploaded_file($_FILES[$imageField]["tmp_name"], $target_file)) {
+            return $target_file;
+        }
+    }
+    return null;
+}
 
-$sqlTemp->bind_param("ssss", $fname, $lname, $gender, $description);
+// Upload images and get their paths
+$photo = uploadImage('photo');
+
+$sqlTemp = $conn->prepare("INSERT INTO directors (fname, lname, gender, description, movie1, movie2, movie3, photo) VALUES (?,?,?,?,?,?,?,?)");
+
+$sqlTemp->bind_param("ssssssss", $fname, $lname, $gender, $description, $movie1, $movie2, $movie3, $photo);
 
 $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $gender = $_POST['gender'];
 $description = $_POST['description'];
-
+$movie1 = $_POST['movie1'];
+$movie2 = $_POST['movie2'];
+$movie3 = $_POST['movie3'];
 
 $sqlTemp->execute();
 

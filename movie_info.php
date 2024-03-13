@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <?php
     include 'navbar.php';
     //include 'head.php';
@@ -61,8 +62,14 @@
             <div class="col-md-8">
                 <h1><?php echo htmlspecialchars($title); ?></h1>
             </div>
-            <div class="col-md-4">
-                <h3>Genre: <?php echo htmlspecialchars($genre); ?></h3>
+            <div class="col-md-2">
+                <h4>Genre: <?php echo htmlspecialchars($genre); ?></h4>
+            </div>
+            <div class="col-md-2">
+                <form method="post" class="add-to-watchlist-form">
+                    <input type="hidden" name="movie_title" value="<?php echo htmlspecialchars($movieTitle); ?>">
+                    <button type="button" class="btn btn-primary btn-add-to-watchlist">Add to Watchlist</button>
+                </form>
             </div>
         </div>
 
@@ -126,9 +133,67 @@
                 <h6>Description: <?php echo htmlspecialchars($description); ?></h6>
             </div>
         </div>
+
+        <!-- Actors in this movie -->
+        <div class="container mt-4">
+            <h2>Actors in this Movie</h2>
+            <div class="row">
+                <?php
+                // Query to get actors who acted in this movie
+                $actorQuery = "SELECT * FROM actors WHERE movie1 = ? OR movie2 = ? OR movie3 = ?";
+                $actorStmt = $conn->prepare($actorQuery);
+                $actorStmt->bind_param("sss", $movieTitle, $movieTitle, $movieTitle);
+                $actorStmt->execute();
+                $actorResult = $actorStmt->get_result();
+
+                if ($actorResult->num_rows > 0) {
+                    while ($actorRow = $actorResult->fetch_assoc()) {
+                        echo "<div class='col-md-4 text-center'>";
+                        echo "<img src='" . htmlspecialchars($actorRow['photo']) . "' class='img-fluid' alt='Actor Image' style='height: 200px; object-fit: contain;'>";
+                        echo "<h5>" . htmlspecialchars($actorRow['fname']) . " " . htmlspecialchars($actorRow['lname']) . "</h5>";
+                        echo "<a href='actor_profile.php?actorid=" . $actorRow['actorid'] . "' class='btn btn-primary'>View Profile</a>";
+                        echo "</div>";
+                    }
+                } else {
+                    echo "<p>No actors available for this movie.</p>";
+                }
+                $actorStmt->close();
+                ?>
+            </div>
+        </div>
+
+        <!-- Directors in this movie -->
+        <div class="container mt-4">
+            <h2>Directors in this Movie</h2>
+            <div class="row">
+                <?php
+                // Query to get directors who acted in this movie
+                $directorQuery = "SELECT * FROM directors WHERE movie1 = ? OR movie2 = ? OR movie3 = ?";
+                $directorStmt = $conn->prepare($directorQuery);
+                $directorStmt->bind_param("sss", $movieTitle, $movieTitle, $movieTitle);
+                $directorStmt->execute();
+                $directorResult = $directorStmt->get_result();
+
+                if ($directorResult->num_rows > 0) {
+                    while ($directorRow = $directorResult->fetch_assoc()) {
+                        echo "<div class='col-md-4 text-center'>";
+                        echo "<img src='" . htmlspecialchars($directorRow['photo']) . "' class='img-fluid' alt='Directors Image' style='height: 200px; object-fit: contain;'>";
+                        echo "<h5>" . htmlspecialchars($directorRow['fname']) . " " . htmlspecialchars($directorRow['lname']) . "</h5>";
+                        echo "<a href='director_profile.php?directorid=" . $directorRow['directorid'] . "' class='btn btn-primary'>View Profile</a>";
+                        echo "</div>";
+                    }
+                } else {
+                    echo "<p>No directors available for this movie.</p>";
+                }
+                $directorStmt->close();
+                ?>
+            </div>
+        </div>
+
         <!-- ...Trailer... -->
 
         <div class="text-center mt-4">
+            <h2>Trailer</h2>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#trailerModal">
                 Watch Trailer
             </button>
@@ -206,5 +271,25 @@
 
 
 </body>
+<script>
+$(document).ready(function() {
+    $('.btn-add-to-watchlist').click(function(e) {
+        e.preventDefault();
+        var movieTitle = $('input[name="movie_title"]').val();
+        $.ajax({
+            url: 'watchlist.php',
+            type: 'post',
+            data: {
+                'add_to_watchlist': true,
+                'movie_title': movieTitle
+            },
+            success: function(response) {
+                // Handle response here
+                alert("Movie added to watchlist!");
+            }
+        });
+    });
+});
+</script>
 
 </html>
