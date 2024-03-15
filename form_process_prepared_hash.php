@@ -26,7 +26,6 @@ echo '<br><br><div class="container">
         </div>
     </div>';
 echo "Username: " . $username . "<br>";
-//echo password_hash($password, PASSWORD_DEFAULT) . "<br>";
 echo "Password: " . $password . "<br>";
 echo "Password Hashed: " . $passwordHashed . "<br>";
 

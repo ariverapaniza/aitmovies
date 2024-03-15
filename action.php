@@ -1,6 +1,6 @@
 <?php
 include "navbar.php";
-include "db_connect.php"; // Include your database connection
+include "db_connect.php";
 
 $genre = 'Action';
 $genreSql = "SELECT * FROM movies WHERE genre = ?";

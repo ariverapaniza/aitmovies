@@ -1,7 +1,6 @@
 <?php
 
 include "navbar.php";
-//session_start(); // Ensure session is started
 include "db_connect.php";
 
 $rusername = $_SESSION['username'];

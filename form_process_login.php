@@ -18,7 +18,6 @@ if ($row = mysqli_fetch_assoc($resultLogin)) {
         // Password is correct, set session variables
         $_SESSION['username'] = $row['username'];
         $_SESSION['admin'] = $row['admin']; // Store admin status in session
-        // $_SESSION['password'] = $row['password']; // It's not recommended to store password in session
 
         // Redirect to login_successful.php
         header("Location: login_successful.php");

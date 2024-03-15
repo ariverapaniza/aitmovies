@@ -31,7 +31,6 @@ echo "Password: " . $password . "<br>";
 echo "Password Hashed: " . $passwordHashed . "<br>";
 
 
-
 echo "<a href='javascript:history.go(-1)'>Back</a>";
 
 $sqlTemp->close();

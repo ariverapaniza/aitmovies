@@ -3,7 +3,6 @@
 
 <head>
     <title>Actor Profile</title>
-    <!-- Include your head styles and scripts here -->
 </head>
 
 <body>
@@ -13,7 +12,7 @@
 
     $actorId = $_GET['actorid'] ?? '';
 
-    // Query to get actor details
+    // Query to get the actor details
     $actorQuery = "SELECT * FROM actors WHERE actorid = ?";
     $actorStmt = $conn->prepare($actorQuery);
     $actorStmt->bind_param("i", $actorId);

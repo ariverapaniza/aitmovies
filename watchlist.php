@@ -12,7 +12,7 @@ if (isset($_POST['add_to_watchlist'])) {
     $stmt->execute();
     $stmt->close();
 
-    // Return a simple success message
+
     echo 'Success';
-    exit; // Stop further script execution for AJAX requests
+    exit;
 }

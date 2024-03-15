@@ -1,8 +1,5 @@
 <?php
-// include "navbar.php";
-// include "db_connect.php";
 
-// Retrieve movies with the highest review where rating is greater or equal to 3
 $movieSql = "SELECT m.*, MAX(r.rating) as max_rating FROM movies m 
              INNER JOIN review r ON m.title = r.rmovie 
              WHERE r.rating >= 3
@@ -28,7 +25,7 @@ $counter = 0;
 foreach ($movies as $movie) {
     if ($counter % 4 == 0) {
         if ($counter > 0) {
-            echo '</div></div>'; // Close the previous carousel-item and its flex container
+            echo '</div></div>';
         }
         echo '<div class="carousel-item ' . ($first ? 'active' : '') . '"><div class="d-flex">';
         $first = false;
@@ -41,7 +38,7 @@ foreach ($movies as $movie) {
     $counter++;
 }
 if ($counter % 4 !== 0 || $counter == 4) {
-    echo '</div></div>'; // Close the last carousel-item and its flex container
+    echo '</div></div>';
 }
 
 echo '    </div>

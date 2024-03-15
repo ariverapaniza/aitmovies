@@ -9,7 +9,7 @@ body {
 .carousel-item img {
   width: 100%;
   height: 600px; /* Fixed height */
-  object-fit: cover; /* This ensures images cover the area without stretching */
+  object-fit: cover; /* This will ensures that images cover the area without stretching */
 }
 
 .carousel-item:not(.active) {
@@ -18,7 +18,7 @@ body {
 
 .poster-carousel-row {
   display: flex;
-  align-items: stretch; /* Ensures equal height of children */
+  align-items: stretch; /* This ensures equal height of children */
 }
 
 .poster-container {
@@ -28,9 +28,9 @@ body {
 }
 
 .poster-container img {
-  max-height: 400px; /* Ensures image does not exceed its container's height */
-  width: auto; /* Maintain aspect ratio */
-  max-width: 100%; /* Ensures image does not exceed its container's width */
+  max-height: 400px; /* Ensures image does not exceed the container's height */
+  width: auto; /* This maintain the aspect ratio */
+  max-width: 100%; /* This ensures image does not exceed its container's width */
 }
 
 /* Newest Movie Carousel */

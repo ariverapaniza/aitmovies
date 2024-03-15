@@ -51,6 +51,11 @@ if (isset($youtubeParams['v'])) {
 $sqlTemp->execute();
 
 // Output confirmation and entered data
+echo '<div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center"></br><h3>Movie Successfully Added!</h3><br>
+            <img src="img/AITMovies_Black_mod_s.png" alt="Logo" width="469" height="144" class="d-inline-block align-text-top"><br><br>
+            </br></br></br>';
 echo "Title: " . $title . "<br>";
 echo "Length: " . $length . "<br>";
 echo "Genre: " . $genre . "<br>";
@@ -66,7 +71,9 @@ if ($image2) echo "Image 2: " . $image2 . "<br>";
 if ($image3) echo "Image 3: " . $image3 . "<br>";
 if ($image4) echo "Image 4: " . $image4 . "<br>";
 
-echo "<a href='javascript:history.go(-1)'>Back</a>";
+echo "<a href='javascript:history.go(-1)'>Back</a></div>
+        </div>
+    </div>";
 
 // Close the statement and the connection
 $sqlTemp->close();

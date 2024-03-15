@@ -4,7 +4,7 @@ include 'db_connect.php';
 
 $cUsername = $_SESSION['username'] ?? '';
 
-// Query to get user details
+// Need query to get user details
 $userQuery = "SELECT * FROM login WHERE username = ?";
 $userStmt = $conn->prepare($userQuery);
 $userStmt->bind_param("s", $cUsername);
@@ -29,7 +29,7 @@ echo "<h1>Watchlist</h1>";
 
 function displayWatchlistMovies($conn, $cUsername)
 {
-    // Query to get movies from user's watchlist
+    // Query to get movies from the watchlist of the user
     $watchlistQuery = "SELECT m.title, m.genre, m.releaseyear, m.poster
                        FROM movies m
                        INNER JOIN watchlist w ON m.title = w.wmovie
@@ -51,7 +51,6 @@ function displayWatchlistMovies($conn, $cUsername)
             echo '<div class="card-body">';
             echo '<h5 class="card-title">' . htmlspecialchars($movie['title']) . '</h5>';
             echo '<p class="card-text">Genre: ' . htmlspecialchars($movie['genre']) . '</p>';
-            //echo '<p class="card-text">Director: ' . htmlspecialchars($movie['director']) . '</p>';
             echo '<p class="card-text">Release Year: ' . htmlspecialchars($movie['releaseyear']) . '</p>';
             echo '</div>';
             echo '</div>';

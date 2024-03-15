@@ -2,8 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Actor Profile</title>
-    <!-- Include your head styles and scripts here -->
+    <title>Directors Profile</title>
 </head>
 
 <body>

@@ -40,7 +40,7 @@
             $description = $movie['description'];
             $trailer = $movie['trailer'];
             $poster = $movie['poster'];  // added this line
-            // Fetch images
+            // Fetch all the images
             for ($i = 1; $i <= 4; $i++) {
                 if (!empty($movie['image' . $i])) {
                     $images[] = $movie['image' . $i];
@@ -261,7 +261,7 @@
     if (isset($_SESSION['username'])) {
         include 'review.php';
     } else {
-        // Display a message if the user is not logged in
+        // Display a message if in case that the user is not logged in
         echo '<div class="container text-center mt-5">
                 <p>You must be logged in to leave a review.</p>
                 <a href="login.php" class="btn btn-primary">Login</a>
@@ -284,7 +284,6 @@ $(document).ready(function() {
                 'movie_title': movieTitle
             },
             success: function(response) {
-                // Handle response here
                 alert("Movie added to watchlist!");
             }
         });

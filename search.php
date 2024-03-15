@@ -1,18 +1,13 @@
 <?php
 
 include 'navbar.php';
-include 'db_connect.php'; // Make sure this file contains your database connection
+include 'db_connect.php';
 
 $searchTerm = isset($_GET['query']) ? $_GET['query'] : '';
 
 $moviesSql = "SELECT * FROM movies WHERE title LIKE ?";
 $genreSql = "SELECT * FROM movies WHERE genre LIKE ?";
-//$actorsSearchSql = "SELECT * FROM actors WHERE id LIKE ?";
-// $actorsfSql = "SELECT * FROM actors WHERE fname LIKE ?";
-// $actorslSql = "SELECT * FROM actors WHERE lname LIKE ?";
 $actorsSql = "SELECT actorid, fname, lname, photo FROM actors WHERE CONCAT(fname, ' ', lname) LIKE ?";
-// $directorsfSql = "SELECT * FROM directors WHERE fname LIKE ?";
-// $directorslSql = "SELECT * FROM directors WHERE lname LIKE ?";
 $directorsSql = "SELECT directorid, fname, lname, photo FROM directors WHERE CONCAT(fname, ' ', lname) LIKE ?";
 
 $results = ['movies' => [], 'actors' => [], 'directors' => []];
@@ -21,7 +16,7 @@ function searchTable($conn, $sql, $searchTerm, &$results, $table)
 {
     if ($stmt = $conn->prepare($sql)) {
         $term = "%$searchTerm%";
-        $stmt->bind_param("s", $term); // Ensure that this line is correctly formatted
+        $stmt->bind_param("s", $term);
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
@@ -33,12 +28,7 @@ function searchTable($conn, $sql, $searchTerm, &$results, $table)
 
 searchTable($conn, $moviesSql, $searchTerm, $results, 'movies');
 searchTable($conn, $genreSql, $searchTerm, $results, 'movies');
-//searchTable($conn, $actorsSearchSql, $searchTerm, $results, 'actors');
-// searchTable($conn, $actorsfSql, $searchTerm, $results, 'actors');
-// searchTable($conn, $actorslSql, $searchTerm, $results, 'actors');
 searchTable($conn, $actorsSql, $searchTerm, $results, 'actors');
-// searchTable($conn, $directorsfSql, $searchTerm, $results, 'directors');
-// searchTable($conn, $directorslSql, $searchTerm, $results, 'directors');
 searchTable($conn, $directorsSql, $searchTerm, $results, 'directors');
 
 // HTML to display results

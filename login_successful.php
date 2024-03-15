@@ -22,7 +22,19 @@ if (isset($_SESSION['username'])) {
         </div>
     </div>';
 } else {
-    echo "<H3>Username not set in session</H3><br>";
+    echo "<div class='container'>
+<div class='row justify-content-center'>
+    <div class='col-md-3'>
+    <H3>Username not set in session</H3><br>
+    </div>
+        </div>
+    </div>";
 }
 
-echo "<H3><a href='javascript:history.go(-1)'>Back</a></H3>";
+echo "<div class='container'>
+<div class='row justify-content-center'>
+    <div class='col-md-3'>
+    <H3><a href='javascript:history.go(-1)'>Back</a></H3>
+    </div>
+        </div>
+    </div>";

@@ -1,8 +1,5 @@
 <?php
-// include "navbar.php";
-// include "db_connect.php";
 
-// Retrieve movies released in or after 2023
 $movieSql = "SELECT * FROM movies WHERE releaseyear >= '2023-01-01' ORDER BY releaseyear DESC";
 
 $movies = [];
@@ -24,7 +21,7 @@ $counter = 0;
 foreach ($movies as $movie) {
     if ($counter % 4 == 0) {
         if ($counter > 0) {
-            echo '</div></div>'; // Close the previous carousel-item and its flex container
+            echo '</div></div>';
         }
         echo '<div class="carousel-item ' . ($first ? 'active' : '') . '"><div class="d-flex">';
         $first = false;
@@ -37,7 +34,7 @@ foreach ($movies as $movie) {
     $counter++;
 }
 if ($counter % 4 !== 0 || $counter == 4) {
-    echo '</div></div>'; // Close the last carousel-item and its flex container
+    echo '</div></div>';
 }
 
 echo '    </div>
