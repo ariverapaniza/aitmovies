@@ -26,7 +26,7 @@ echo '<br><br><div class="container">
         </div>
     </div>';
 echo "Username: " . $username . "<br>";
-echo "Password: " . $password . "<br>";
+//echo "Password: " . $password . "<br>";
 echo "Password Hashed: " . $passwordHashed . "<br>";
 
 
